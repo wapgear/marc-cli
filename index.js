@@ -5,6 +5,7 @@ const module_generator = require('./generators/module');
 const component_generator = require('./generators/component');
 const fs = require('fs');
 const createFile = require('./helpers/createFile')
+const dotenv = require('dotenv').config({path: process.cwd() + '/.marc-env'})
 
 
 program
