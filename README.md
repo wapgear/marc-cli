@@ -1,4 +1,5 @@
 # marc-cli
 MARC - CLI for creating skeletons for React components and modules
 
-## IN PROGRESS 👷 🚧
+## IN PROGRESS AND IT'S NOT AN ALPHA YET 👷 🚧
+Check my roadmap: [roadmap](https://github.com/wapgear/marc-cli/edit/master/ROADMAP.md)
