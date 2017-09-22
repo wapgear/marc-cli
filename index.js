@@ -1,21 +1,30 @@
 #!/usr/bin/env node --harmony
 const program = require('commander');
-const prompt = require('promptly');
 const module_generator = require('./generators/module');
 const component_generator = require('./generators/component');
-const fs = require('fs');
-const createFile = require('./helpers/createFile')
-const dotenv = require('dotenv').config({path: process.cwd() + '/.marc-env'})
+const init_generator = require('./generators/init');
+const config = require('dotenv').config({path: process.cwd() + '/.marc.env'}).parsed;
 
 
 program
-  .option('-mp, --module-path [path]', 'Add module path')
-  .option('-cp, --component-path [path]', 'Add component path')
+  .command('init')
+  .action(init_generator);
+
+program
+  .option('-mp, --modules-path [path]', 'Add module path')
+  .option('-cp, --components-path [path]', 'Add component path')
   .option('-ap, --additional-path [path]', 'Add additional path')
   .command('make <el>')
   .action(el => {
-    if(el === 'module') module_generator(program)
-    if(el === 'component') component_generator(program)
-  })
+    const settings = {
+      modulesPath: (program && program.modulePath) || (config && config.MODULES_PATH),
+      componentsPath: (program && program.componentsPath) || (config && config.COMPONENTS_PATH),
+      additionalPath: (program && program.additionalPath) || (config && config.ADDITIONAL_PATH)
+    };
+
+    if(el === 'module') module_generator(settings)
+    if(el === 'component') component_generator(settings)
+  });
+
 
 program.parse(process.argv);
