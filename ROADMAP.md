@@ -5,17 +5,16 @@
 
 ✅ init command 
 
+✅ generator: styles
+
+✅ generator: types
+
+✅ generator: selectors
+
+✅ generators: settings
+
 - describe my favorite project structure
 
-- simple and smart creators
+- simple and advanced creators
 
-- advanced creator
-
-🚧 generator: styles
-
-🚧 generator: types
-
-🚧 generator: selectors
-
-🚧 generators: settings
-
+- ...tests ⚠️
